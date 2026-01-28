@@ -17,7 +17,7 @@ class Message(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     __table_args__ = (
-        CheckConstraint("length(trim(content)) > 0 ", name="check_content_not_empty")
+        CheckConstraint("length(trim(content)) > 0 ", name="check_content_not_empty"),
     )
 
     #relationships

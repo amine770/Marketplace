@@ -14,19 +14,18 @@ class Conversation(Base):
     
     last_message_at = Column(DateTime(timezone=True), nullable=True)
 
-    created_at = Column(DateTime(timezone=True), server_default=func.now, nullable=False)
+    created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     __table_args__ = (
         UniqueConstraint("listing_id", "buyer_id", name="unique_conversation"),
-        CheckConstraint("buyer_id!=seller_id", name="check_different_users")
-
+        CheckConstraint("buyer_id!=seller_id", name="check_different_users"),
     )
 
     #relationships
     listing = relationship("Listing", back_populates="conversations")
     seller = relationship("User", foreign_keys=[seller_id], back_populates="conversation_as_seller")
     buyer = relationship("User", foreign_keys=[buyer_id], back_populates="conversation_as_buyer")
-    messages = relationship("Message", back_populates="conversation", cascade="all delete-orphan")
+    messages = relationship("Message", back_populates="conversation", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<Conversation(id={self.id}, listing_id={self.listing_id}, buyer_id={self.buyer_id})>"

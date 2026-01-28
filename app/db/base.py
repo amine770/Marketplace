@@ -1,4 +1,4 @@
-from db.session import Base # noqa to ignore unused import warnings
+from app.db.session import Base # noqa to ignore unused import warnings
 
 from app.models.user import User #noqa
 from app.models.category import Category #noqa

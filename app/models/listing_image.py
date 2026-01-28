@@ -16,7 +16,7 @@ class ListingImage(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     __table_args__ = (
-        UniqueConstraint("listing_id", "display_order", name="unique_image_order")
+        UniqueConstraint("listing_id", "display_order", name="unique_image_order"),
     )
 
     #relationships

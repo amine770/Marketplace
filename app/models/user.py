@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from db.base import Base
+from app.db.base import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -24,18 +24,18 @@ class User(Base):
                         nullable=False)
     
     #relationships
-    listings = relationship("Listing", back_populates="seller", cascade="all delete-orphan")
-    favorites = relationship("Favorite", back_populates="user", cascade="all delete-orphan")
-    sent_messages = relationship("Message", back_populates="sender", cascade="all delete-orphan")
+    listings = relationship("Listing", back_populates="seller", cascade="all, delete-orphan")
+    favorites = relationship("Favorite", back_populates="user", cascade="all, delete-orphan")
+    sent_messages = relationship("Message", back_populates="sender", cascade="all, delete-orphan")
     conversation_as_buyer = relationship("Conversation", 
                                          back_populates="buyer", 
                                          foreign_keys= "Conversation.buyer_id",
-                                         cascade="all delete-orphan"),
+                                         cascade="all, delete-orphan")
     
     conversation_as_seller = relationship("Conversation",
                                           back_populates="seller",
                                           foreign_keys="Conversation.seller_id",
-                                          cascade="all delete_orphan"
+                                          cascade="all, delete-orphan"
                                           )
     
     def __repr__(self):

@@ -14,7 +14,7 @@ class Favorite(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
 
     __table_args__ = (
-        UniqueConstraint("listing_id", "user_id", name="unique_favorite")
+        UniqueConstraint("listing_id", "user_id", name="unique_favorite"),
     )
 
     #relationships

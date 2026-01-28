@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
-    APP_Name: str = "Marketplace API"
+    APP_NAME: str = "Marketplace API"
     DEBUG: bool = False
     VERSION: str = "1.0.0"
 
