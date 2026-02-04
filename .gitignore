@@ -4,4 +4,4 @@ __pycache__
 alembic.ini
 alembic/README
 alembic/env.py
-alembic/script.py.mako
+alembic/script.py.mako  
