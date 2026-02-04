@@ -26,3 +26,12 @@ class UserUpdate(BaseModel):
     full_name: Optional[str] = Field(None, min_length=1, max_length=100)
     phone: Optional[str] = Field(None, max_length=20)
     location: Optional[str] = Field(None, max_length=100)
+
+class UserWithStatesResponse(BaseModel):
+    id: int
+    full_name: str
+    phone: str
+    location: str
+    created_at: datetime
+    listings_count: int
+    model_config = ConfigDict(from_attributes=True)
